@@ -23,8 +23,7 @@ class action_plugin_links4pages extends DokuWiki_Action_Plugin
      */
     public function register(Doku_Event_Handler $controller)
     {
-        $controller->register_hook('MENU_ITEMS_ASSEMBLY', 'FIXME', $this, 'handle_menu_items_assembly');
-   
+        $controller->register_hook('MENU_ITEMS_ASSEMBLY', 'AFTER', $this, 'handle_menu_items_assembly');
     }
 
     /**
@@ -40,7 +39,9 @@ class action_plugin_links4pages extends DokuWiki_Action_Plugin
      */
     public function handle_menu_items_assembly(Doku_Event $event, $param)
     {
+        if($event->data['view'] == 'page') {
+            array_splice($event->data['items'], 1, 0, [new \dokuwiki\plugin\links4pages\MenuItem()]);
+        }
     }
 
 }
-

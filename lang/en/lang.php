@@ -11,3 +11,4 @@
 // custom language strings for the plugin
 // $lang['fixme'] = 'FIXME';
 
+$lang['btn_add_new_page']      = 'Create new page';
