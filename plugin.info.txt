@@ -1,7 +1,7 @@
 base   links4pages
 author Albin Kauffmann
 email  albin@kauff.org
-date   2018-05-29
+date   2018-07-27
 name   links4pages plugin
 desc   Add custom links in all PageMenus
 url    https://github.com/albinou/dokuwiki-plugin-links4pages

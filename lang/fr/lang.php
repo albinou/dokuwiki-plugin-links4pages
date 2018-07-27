@@ -5,4 +5,5 @@
  * @author Albin Kauffmann <albin@kauff.org>
  */
 
-$lang['btn_add_new_page']      = 'Créer nouvelle page';
+$lang['btn_unknown']           = "Action inconnue";
+$lang['btn_new_page']          = "Créer nouvelle page";

@@ -40,7 +40,17 @@ class action_plugin_links4pages extends DokuWiki_Action_Plugin
     public function handle_menu_items_assembly(Doku_Event $event, $param)
     {
         if($event->data['view'] == 'page') {
-            array_splice($event->data['items'], 1, 0, [new \dokuwiki\plugin\links4pages\MenuItem()]);
+            $i = 1;
+            while ($i < 3) {
+                $act = $this->getConf(sprintf("%'.02d_act", $i));
+                if ($act !== 'none') {
+                    $id = $this->getConf(sprintf("%'.02d_id", $i));
+                    $pos = $this->getConf(sprintf("%'.02d_pos", $i));
+                    array_splice($event->data['items'], intval($pos), 0,
+                                 [new \dokuwiki\plugin\links4pages\MenuItem($id, $act)]);
+                }
+                $i = $i + 1;
+            }
         }
     }
 

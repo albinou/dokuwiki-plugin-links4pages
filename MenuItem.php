@@ -16,17 +16,27 @@ class MenuItem extends AbstractItem {
     /** @var string name of the action, usually the lowercase class name */
     protected $type = 'show';
 
-    /** @var string icon file */
-    protected $svg = __DIR__ . '/images/file-plus.svg';
+    /** @var string text identifier used to call getLang() */
+    private $btn_txt_id = '';
 
     /**
      * MenuItem constructor.
      *
      * Sets the page $id to link to
      */
-    public function __construct() {
+    public function __construct($id, $menu_item_type) {
         parent::__construct();
-        $this->id = 'wiki:add-page';
+        $this->id = $id;
+        switch ($menu_item_type) {
+            case "new_page":
+                $this->btn_txt_id = 'btn_new_page';
+                $this->svg = __DIR__ . '/images/file-plus.svg';
+                break;
+            default:
+                $this->btn_txt_id = 'btn_unknown';
+                $this->svg = __DIR__ . '/images/file-question.svg';
+                break;
+        }
     }
 
     /**
@@ -36,7 +46,7 @@ class MenuItem extends AbstractItem {
      */
     public function getLabel() {
         $hlp = plugin_load('action', 'links4pages');
-        return $hlp->getLang('btn_add_new_page');
+        return $hlp->getLang($this->btn_txt_id);
     }
 
 }
