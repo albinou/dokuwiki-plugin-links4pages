@@ -24,29 +24,20 @@ class MenuItem extends AbstractItem {
      *
      * Sets the page $id to link to
      */
-    public function __construct($id, $menu_item_type) {
+    public function __construct($id, $label, $svg_id) {
         parent::__construct();
         $this->id = $id;
-        switch ($menu_item_type) {
-            case "new_page":
-                $this->btn_txt_id = 'btn_new_page';
-                $this->svg = __DIR__ . '/images/file-plus.svg';
-                break;
-            default:
-                $this->btn_txt_id = 'btn_unknown';
-                $this->svg = __DIR__ . '/images/file-question.svg';
-                break;
+        if (empty($label)) {
+            global $lang;
+            $this->label = $lang['skip_to_content'] . ' "' . $id . '"';
+        } else {
+            $this->label = $label;
         }
-    }
-
-    /**
-     * Get label from plugin language file
-     *
-     * @return string
-     */
-    public function getLabel() {
-        $hlp = plugin_load('action', 'links4pages');
-        return $hlp->getLang($this->btn_txt_id);
+        if (empty($svg_id)) {
+            $this->svg = __DIR__ . '/images/file-question.svg';
+        } else {
+            $this->svg = mediaFN($svg_id);
+        }
     }
 
 }

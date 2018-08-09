@@ -5,14 +5,9 @@
  * @author Albin Kauffmann <albin@kauff.org>
  */
 
-$lang['01_act'] = "Button 1 / Action type";
-$lang['01_id']  = "Button 1 / Page ID link";
-$lang['01_pos'] = "Button 1 / Position of the link";
-
-$lang['02_act'] = "Button 2 / Action type";
-$lang['02_id']  = "Button 2 / Page ID link";
-$lang['02_pos'] = "Button 2 / Position of the link";
-
-$lang['03_act'] = "Button 3 / Action type";
-$lang['03_id']  = "Button 3 / Page ID link";
-$lang['03_pos'] = "Button 3 / Position of the link";
+for ($i = 1; $i <= 3; $i++) {
+    $lang[sprintf("%'.02d_id",     $i)] = sprintf("Button %d / Page ID link", $i);
+    $lang[sprintf("%'.02d_label",  $i)] = sprintf("Button %d / Link label", $i);
+    $lang[sprintf("%'.02d_svg_id", $i)] = sprintf("Button %d / Media ID (SVG)", $i);
+    $lang[sprintf("%'.02d_pos",    $i)] = sprintf("Button %d / Position of the link", $i);
+}
